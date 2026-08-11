@@ -121,7 +121,8 @@
     };
   }
 
-  function drawSeg(a,b,c,s,erase){� ctx.globalCompositeOperation = erase ? 'destination-out' : 'source-over';
+  function drawSeg(a,b,c,s,erase){
+    ctx.globalCompositeOperation = erase ? 'destination-out' : 'source-over';
     ctx.strokeStyle = c; ctx.lineWidth = s;
     ctx.lineCap='round'; ctx.lineJoin='round';
     ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
