@@ -108,8 +108,8 @@
     canvas.height = img.naturalHeight || 1145;
     restore();
   }
-  if(img.complete && img.naturalWidth){ initCanvas(); }
-  else img.addEventListener('load', initCanvas);
+  function tryInit(){ if(img.naturalWidth){ initCanvas(); return true; } return false; }
+  if(!tryInit()){ img.addEventListener('load', initCanvas, {once:true}); if(img.decode){ img.decode().then(initCanvas).catch(function(){}); } window.addEventListener('load', initCanvas); }
 
   // ---- coordinate mapping (displayed px -> canvas px) ----
   function pos(e){
